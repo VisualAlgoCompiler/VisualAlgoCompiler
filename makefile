@@ -1,7 +1,7 @@
-all : mycc
+all : visualAlgo
 
-mycc : main.o
-	gcc main.o -o mycc
+visualAlgo : main.o
+	gcc main.o -o visualAlgo
 
 main.o : main.c
 	gcc -c main.c

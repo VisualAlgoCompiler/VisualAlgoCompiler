@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void Usage(){
+void ModeUsage(){
     fprintf(stderr,"Usage:\n");
     fprintf(stderr,"    mycc -mode [options] infile\n\n");
     fprintf(stderr,"Valid modes:\n");
@@ -15,25 +15,22 @@ void ModeVersion(){
 }
 
 int main(int argc, char *argv[]) {
-    if(argc==2 && strcmp("-v",argv[1])==0){
+    char *filename;
+    if (argc==2 && (strcmp("-V",argv[1])==0 || strcmp("--version",argv[1])==0)){
         ModeVersion();
-    }else if(argc==4 && strcmp("-0",argv[1])==0 && strcmp("-o",argv[2])==0){
-        FILE *fp;
-        char *filename;
-        filename=argv[3];
-        fp= fopen(filename,"w");
-        fprintf(fp,"Welcome to VisualAlgo\n    Written by Pinhao Wang (wwwpa0620@gmail.com) and Zizheng Yang (zizhengyang5555@gmail.com)\n    Version 1.0.0\n    27 January, 2022\n");
-        fclose(fp);
-    }else if(argc==3 && strcmp("-1",argv[1])==0){
-        filename=argv[2];
-        // initNode();
-        // scanner();
-        // BraMappingError();
-        // printNodeLink();
-        // printErrorLink();
-        // close();
-    }else{
-        Usage();
+    } else if (strcmp("-L",argv[1])==0 || strcmp("-lexer",argv[1])==0){
+        if (argc==3) {
+          filename=argv[2];
+          printf("%s\n", filename);
+          // initNode();
+          // scanner();
+          // BraMappingError();
+          // printNodeLink();
+          // printErrorLink();
+          // close();
+        } else {fprintf(stderr,"You missed the filename, please input the filename for lexer to process");}
+    } else {
+        ModeUsage();
     }
     return 0;
 }
