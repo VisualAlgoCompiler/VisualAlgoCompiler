@@ -10,13 +10,13 @@ void Usage(){
     fprintf(stderr,"    -o outfile: write to outfile instead of standard output\n");
 }
 
-void Mode0(){
+void ModeVersion(){
     fprintf(stdout,"Welcome to VisualAlgo\n    Written by Pinhao Wang (wwwpa0620@gmail.com) and Zizheng Yang (zizhengyang5555@gmail.com)\n    Version 1.0.0\n    27 January, 2022\n");
 }
 
 int main(int argc, char *argv[]) {
     if(argc==2 && strcmp("-v",argv[1])==0){
-        Mode0();
+        ModeVersion();
     }else if(argc==4 && strcmp("-0",argv[1])==0 && strcmp("-o",argv[2])==0){
         FILE *fp;
         char *filename;
@@ -24,6 +24,14 @@ int main(int argc, char *argv[]) {
         fp= fopen(filename,"w");
         fprintf(fp,"Welcome to VisualAlgo\n    Written by Pinhao Wang (wwwpa0620@gmail.com) and Zizheng Yang (zizhengyang5555@gmail.com)\n    Version 1.0.0\n    27 January, 2022\n");
         fclose(fp);
+    }else if(argc==3 && strcmp("-1",argv[1])==0){
+        filename=argv[2];
+        // initNode();
+        // scanner();
+        // BraMappingError();
+        // printNodeLink();
+        // printErrorLink();
+        // close();
     }else{
         Usage();
     }
